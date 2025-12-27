@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+
+    tools {
+        nodejs 'node18'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh '''
+                  cd Chatbot-UI
+                  npm install
+                '''
+            }
+        }
+
+        stage('Build Application') {
+            steps {
+                sh '''
+                  cd Chatbot-UI
+                  npm run build
+                '''
+            }
+        }
+    }
+}
