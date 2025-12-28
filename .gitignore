@@ -37,3 +37,7 @@ coverage/
 # Kubernetes
 *.kubeconfig
 
+# Backups & logs
+chatbot-db-backups/
+*.sql
+backup.log

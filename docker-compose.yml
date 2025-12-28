@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  chatbot-ui:
+    image: angelbista/chatbot-ui:latest
+    container_name: chatbot-ui
+    ports:
+      - "3000:3000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+
+  postgres:
+    image: postgres:15
+    container_name: chatbot-db
+    restart: always
+    environment:
+      POSTGRES_USER: chatbot
+      POSTGRES_PASSWORD: chatbot123
+      POSTGRES_DB: chatbotdb
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
